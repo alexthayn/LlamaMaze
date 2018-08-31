@@ -5,8 +5,113 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HW02_AThayn"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="Llama Maze" Height="650" Width="800"
+        ResizeMode="NoResize">
+    
+    <!--Canvas-->
+    <Canvas Name="MazeCanvas">
         
-    </Grid>
+        <!--Llama-->
+        <Rectangle Name ="Sprite"
+                   Width="50"
+                   Height="50"
+                   Canvas.Top="250"
+                   Canvas.Left="200"
+                   Panel.ZIndex="3">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="Images/Llama.png"/>
+            </Rectangle.Fill>
+        </Rectangle>
+
+        <!--Cactus-->
+        <Image Source="Images/Cactus.png"
+               Width="60"
+               Height="60"
+               Canvas.Left="650"
+               Canvas.Top="550"
+               Panel.ZIndex="2"/>
+
+        <!--Stack Panel-->
+        <StackPanel Canvas.Top="50"
+                    Margin="28,0,0,0">
+            <TextBlock Name="WinningMessage"
+                       FontSize="30"
+                       FontWeight="Medium"
+                       Foreground="DodgerBlue"
+                       TextAlignment="Center"
+                       Visibility="Visible"
+                       Margin="0, 40">
+                Help Llama <LineBreak/> Find His <LineBreak/>Cactus
+            </TextBlock>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                
+                <Button Grid.Column ="1"
+                        Width="50"
+                        Click="MoveUp_Click"
+                        BorderThickness="0"
+                        Background="Transparent">
+                    <Image Source="Images/ArrowKey.png"
+                           RenderTransformOrigin="0.5, 0.5"/>
+                </Button>
+            
+                <Button Grid.Row="1"
+                        Click="MoveLeft_Click"
+                        Width="50"
+                        BorderThickness="0"
+                        Background="Transparent">
+                    <Image Source="Images/ArrowKey.png"
+                           RenderTransformOrigin="0.5, 0.5">
+                        <Image.RenderTransform>
+                            <RotateTransform  Angle="270"/>
+                        </Image.RenderTransform>
+                    </Image>
+                </Button>
+
+                <Button Grid.Row ="1"
+                        Grid.Column="2"
+                        Click="MoveRight_Click"
+                        Width="50"
+                        BorderThickness="0"
+                        Background="Transparent">
+                    <Image Source="Images/ArrowKey.png"
+                           RenderTransformOrigin="0.5, 0.5">
+                        <Image.RenderTransform>
+                            <RotateTransform  Angle="90"/>
+                        </Image.RenderTransform>
+                    </Image>
+                </Button>
+
+                <Button Grid.Row="2"
+                        Grid.Column="1"
+                        Click="MoveDown_Click"
+                        Width="50"
+                        BorderThickness="0"
+                        Background="Transparent">
+                    <Image Source="Images/ArrowKey.png"
+                           RenderTransformOrigin="0.5, 0.5">
+                        <Image.RenderTransform>
+                            <RotateTransform  Angle="180"/>
+                        </Image.RenderTransform>
+                    </Image>
+                </Button>
+            </Grid>
+            
+            <Button Margin="10"
+                    Click="Reset"
+                    Background="DodgerBlue">
+                Reset Game
+            </Button>
+        </StackPanel>
+    </Canvas>
 </Window>
